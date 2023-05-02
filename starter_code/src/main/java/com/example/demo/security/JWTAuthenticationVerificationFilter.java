@@ -3,7 +3,6 @@ package com.example.demo.security;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.example.demo.constant.SecurityConstants;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +21,6 @@ import com.auth0.jwt.JWT;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 @Component
-@Slf4j
 public class JWTAuthenticationVerificationFilter extends BasicAuthenticationFilter {
     public JWTAuthenticationVerificationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
@@ -53,13 +51,13 @@ public class JWTAuthenticationVerificationFilter extends BasicAuthenticationFilt
                         .verify(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
                         .getSubject();
                 if (user != null) {
-                    log.info("Token validation for the user was successful {}  ", user);
+                    logger.info("Token validation for the user was successful {}  " + user);
                     return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
                 }
             } catch (JWTDecodeException decodeException) {
-                log.error("JWTDecodeException {} ", decodeException.getMessage());
+                logger.error("JWTDecodeException {} " + decodeException.getMessage());
             } catch (SignatureVerificationException signatureVerificationException) {
-                log.error("SignatureVerificationException {}", signatureVerificationException.getMessage());
+                logger.error("SignatureVerificationException {}" + signatureVerificationException.getMessage());
             }
         }
         return null;
