@@ -18,6 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
     	<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<io.springfox.version>2.9.2</io.springfox.version>
 	</properties>
 
 	<dependencies>
@@ -49,6 +50,41 @@
 		    <groupId>org.codehaus.mojo</groupId>
 		    <artifactId>tomcat-maven-plugin</artifactId>
 		    <version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.10.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${io.springfox.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${io.springfox.version}</version>
 		</dependency>
 	</dependencies>
 
