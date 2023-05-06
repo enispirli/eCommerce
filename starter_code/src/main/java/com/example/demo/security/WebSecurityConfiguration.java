@@ -30,7 +30,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/v2/api-docs",
                         "/webjars/**")
                 .permitAll()
-                .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthenticationVerificationFilter(authenticationManager()))
